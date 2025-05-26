@@ -13,9 +13,4 @@ export class LoginDto {
     @IsString()
     @MaxLength(255)
     readonly password: string;
-
-    @ApiPropertyOptional({ description: 'Đăng nhập bằng AD Account' })
-    @IsOptional()
-    @IsBoolean()
-    readonly isADAccount?: boolean;
 }

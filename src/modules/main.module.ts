@@ -1,6 +1,7 @@
 import {Module} from "@nestjs/common";
 import {RouterModule} from "@nestjs/core";
 import { AuthModule } from './auth/auth.module';
+import { EmployeeModule } from './employee/employee.module';
 
 const modules: any[] = [];
 
@@ -17,6 +18,7 @@ const modules: any[] = [];
             },
         ]),
         AuthModule,
+        EmployeeModule,
     ],
     providers: [
         // {

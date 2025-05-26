@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import {ClassConstructor} from "class-transformer";
 
 export class ResponseDto<T = null> {
     @ApiProperty({ example: 200 })
@@ -16,4 +17,12 @@ export class ResponseDto<T = null> {
     constructor(partial: Partial<ResponseDto<T>> = {}) {
         Object.assign(this, partial);
     }
+}
+
+export function ResponseDtoType<T>(cls: ClassConstructor<T>) {
+    class ResponseDtoWithData extends ResponseDto<T> {
+        @ApiProperty({ type: cls })
+        data: T = undefined as unknown as T;
+    }
+    return ResponseDtoWithData;
 }

@@ -1,19 +1,10 @@
-import {Controller, Get, Param, Post} from '@nestjs/common';
+import {Controller, Get, Param, Post, Req, Res} from '@nestjs/common';
+import {Request, Response} from "express";
 import { AppService } from './app.service';
+import {ApiTag} from "./decorators/api-tag.decorator";
 
 @Controller()
+@ApiTag({ name: 'app' })
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
-  @Get(':id')
-  getProduct(@Param('id') id: number) {
-    return this.appService.getProduct(id);
-  }
-
-  @Get('')
-  getProducts(): any {
-    return {
-      message: 'Very Hello Word',
-    }
-  }
 }
